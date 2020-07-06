@@ -3,7 +3,7 @@ from django.apps import apps
 from colecao_processos.models import Processo
 
 # Create your views here.
-def processos(request):
+def listaProcessos(request):
     models = apps.get_app_config('colecao_processos').get_models()
     output_json = {"Processos": []}
     for processo in Processo.objects.all():
