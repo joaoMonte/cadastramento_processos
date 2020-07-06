@@ -15,6 +15,14 @@ Devem ser realizados os seguintes comandos no terminal linux, no diretório raiz
 
 ```
 
+Em seguida, para iniciar o servidor:
+
+```
+>> python3 manage.py runserver
+
+```
+
+
 ## Endpoints
 
 O projeto possui 3 endpoints que são acessíveis via navegador:
