@@ -10,8 +10,13 @@ def upload(request):
     if request.method == 'POST':
         form = UploadPlanilha(request.POST, request.FILES)
         if form.is_valid():
+            nome = request.POST['nome']
+            cliente = request.POST['cliente']
+            arquivo = request.FILES['planilha']
+            novaPlanilha = Planilha(nome=nome, cliente=cliente, arquivo=arquivo)
+            novaPlanilha.save()
             #Chama a função para processamento dos CSVs 
-            processaCsv(request.FILES['planilha'])
+            processaCsv(arquivo)
     return render(request, 'uploadScreen.html', locals())
 
 def processaCsv(filename):
