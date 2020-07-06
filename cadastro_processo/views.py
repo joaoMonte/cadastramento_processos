@@ -41,8 +41,8 @@ def processaCsv(filename):
     csvfile = filename.read().decode("utf-8") 
     #Carrega dinamicamente o modelo Processo
     Processo = apps.get_model('colecao_processos', 'Processo')
-    #Cria instancias e as salva
-    for line in csvfile.split('\n'):
+    #Cria instancias e as salva, removendo a primeira linha do csv (colunas)
+    for line in csvfile.split('\n')[1::]:
         if line:
             pasta, comarca, uf = line.split(';') 
             uf = uf.replace("\r", "")
