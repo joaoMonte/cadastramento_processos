@@ -3,5 +3,5 @@ from . import views
 
 urlpatterns = [
     path('', views.listaPlanilhas, name='lista planilhas'),
-    path('/upload', views.upload, name='upload de planilha'),
+    path('upload', views.upload, name='upload de planilha'),
 ]
