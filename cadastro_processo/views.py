@@ -1,10 +1,22 @@
-import csv
+from django.http import JsonResponse
 from django.shortcuts import render
 from django.apps import apps
 from .forms import UploadPlanilha
 from .models import Planilha
 
 # Create your views here.
+def listaPlanilhas(request):
+    output_json = {"Planilhas": []}
+    for planilha in Planilha.objects.all():
+        planilha_json = {
+            "nome": planilha.nome,
+            "cliente": planilha.cliente,
+            "arquivo": planilha.arquivo
+        }
+        output_json["Planilhas"].append(planilha_json)
+    return JsonResponse(output_json)
+
+
 def upload(request):
     form = UploadPlanilha()
     if request.method == 'POST':
